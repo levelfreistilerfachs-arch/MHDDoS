@@ -189,7 +189,7 @@ def handle_ping(message):
                 f"⚙️ *Tipo:* {attack_type}\n"
                 f"🧵 *Hilos:* {threads}\n"
                 f"⏳ *Duración:* {duration} segundos\n\n"
-                "*bot * 🎮"
+                "*Este bot fue creado por @xFernandoh* 🎮"
             ),
             reply_markup=markup,
             parse_mode="Markdown",
@@ -311,7 +311,7 @@ def handle_restart_attack(call):
                 f"⚙️ *Tipo:* {attack_type}\n"
                 f"🧵 *Hilos:* {threads}\n"
                 f"⏳ *Duración:* {duration} segundos\n\n"
-                "*bot* 🎮",
+                "*Este bot fue creado por @xFernandoh* 🎮",
                 chat_id=call.message.chat.id,
                 message_id=call.message.id,
                 reply_markup=markup,
