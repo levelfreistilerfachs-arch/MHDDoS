@@ -84,9 +84,9 @@ def check_shutdown_time():
                     bot.send_message(
                         group_id,
                         "⚠️ *Aviso Importante:*\n\n"
-                        " se apagará en **5 minutos** debido a límites de tiempo.\n"
-                        "Un administrador lo reactivará \n\n"
-                        "¡",
+                        "se apagará en **5 minutos** debido a límites de tiempo.\n"
+                        "Un administrador lo reactivará .\n\n"
+                        "¡! ",
                         parse_mode="Markdown",
                     )
                 except Exception as e:
@@ -106,7 +106,7 @@ def notify_groups_bot_started():
             bot.send_message(
                 group_id,
                 "✅ *¡online!*\n\n"
-                "Localizando...\n\n"
+                "Localizando....\n\n"
                 "¡server listo! ",
                 parse_mode="Markdown",
             )
@@ -118,12 +118,12 @@ def handle_start(message):
     add_user(message.chat.id)  # Asegura que el usuario quede registrado
 
     markup = InlineKeyboardMarkup()
-    button = InlineKeyboardButton("💻 SOPORTE 💻", url=f"tg://user?id={ADMIN_ID}")
+    button = InlineKeyboardButton("💻 *SOPORTE - OFICIAL* 💻", url=f"tg://user?id={ADMIN_ID}")
     markup.add(button)
 
     bot.send_message(
         message.chat.id,
-        " *Bienvenido* \n\n"
+        " *¡Bienvenido!* \n\n"
         "🔧 Usa `/help` para ver los comandos disponibles.",
         reply_markup=markup,
         parse_mode="Markdown",
@@ -185,10 +185,10 @@ def handle_ping(message):
             message,
             (
                 "*🔥 ¡Iniciando ataques continuos....! 🔥*\n\n"
-                f"🌐 *SERVIDOR:* {ip_port}\n"
-                f"⚙️ *TIPO:* {attack_type}\n"
+                f"🌐 *server:* {ip_port}\n"
+                f"⚙️ *Tipo:* {attack_type}\n"
                 f"🧵 *Hilos:* {threads}\n"
-                f"⏳ *DURACIÓN:* {duration} segundos\n\n"
+                f"⏳ *Duración:* {duration} segundos\n\n"
                 "** 🎮"
             ),
             reply_markup=markup,
@@ -307,10 +307,10 @@ def handle_restart_attack(call):
 
             bot.edit_message_text(
                 "*🔥 ¡Iniciando ataques continuos....! 🔥*\n\n"
-                f"🌐 *SERVIDOR:* {ip_port}\n"
-                f"⚙️ *TIPO:* {attack_type}\n"
-                f"🧵 *HILOS:* {threads}\n"
-                f"⏳ *DURACIÓN:* {duration} segundos\n\n"
+                f"🌐 *server:* {ip_port}\n"
+                f"⚙️ *Tipo:* {attack_type}\n"
+                f"🧵 *Hilos:* {threads}\n"
+                f"⏳ *Duración:* {duration} segundos\n\n"
                 "** 🎮",
                 chat_id=call.message.chat.id,
                 message_id=call.message.id,
@@ -413,10 +413,10 @@ def handle_help(message):
     bot.send_message(
         message.chat.id,
         (
-            "🔧 *¿Cómo usar?* \n\n"
-            "\n\n"
+            "🔧 *¿Cómo usar?* 🤖\n\n"
+            ".\n\n"
             "*Comandos disponibles:*\n"
-            "1. `/startt`: Inicia y te da una breve introducción.\n"
+            "1. `/startt`: Inicia el bot y te da una breve introducción.\n"
             "2. `/crash <TIPO> <IP/HOST:PUERTO> <HILOS> <MS>`: Inicia.\n"
             "3. `/addgroup <ID del grupo>`: Agrega un grupo a la lista de grupos permitidos (solo admin).\n"
             "4. `/removegroup <ID del grupo>`: Elimina un grupo de la lista de grupos permitidos (solo admin).\n"
@@ -424,7 +424,7 @@ def handle_help(message):
             "6. `/timeactive`: Muestra el tiempo activo del bot y el tiempo restante antes de que se cierre.\n"
             "7. `/broadcast <mensaje>`: Envía un mensaje a todos los usuarios registrados (solo admin).\n"
             "8. `/broadcastgroup <mensaje>`: Envía un mensaje a todos los grupos autorizados (solo admin).\n\n"
-            "¡es todo! 🎮"
+            "¡son todas las funciones por ahora! 🎮"
         ),
         parse_mode="Markdown",
     )
@@ -446,10 +446,10 @@ def handle_timeactive(message):
     bot.reply_to(
         message,
         (
-            f"🕒 *TIEMPO ACTIVO:*\n"
+            f"🕒 *TIEMPOACTIVO:*\n"
             f"✅ *TIEMPO TRANSCURRIDO:* {elapsed_minutes}m {elapsed_seconds}s\n"
-            f"⚠️ *TIEMPO RESTANTE:* {remaining_minutes}m {remaining_seconds}s\n\n"
-            "➡️ *Recuerda que  se cierra automáticamente después de 140 minutos.*"
+            f"⚠️ *TIEMPORESTANTE:* {remaining_minutes}m {remaining_seconds}s\n\n"
+            "➡️ *Recuerda que se cierra automáticamente después de 140 minutos.*"
         ),
         parse_mode="Markdown"
     )
