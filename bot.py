@@ -84,9 +84,9 @@ def check_shutdown_time():
                     bot.send_message(
                         group_id,
                         "⚠️ *Aviso Importante:*\n\n"
-                        "El bot se apagará en **5 minutos** debido a límites de tiempo.\n"
-                        "Un administrador lo reactivará pronto. Por favor, sean pacientes.\n\n"
-                        "¡Gracias por su comprensión! 🙏",
+                        " se apagará en **5 minutos** debido a límites de tiempo.\n"
+                        "Un administrador lo reactivará \n\n"
+                        "¡",
                         parse_mode="Markdown",
                     )
                 except Exception as e:
@@ -105,9 +105,9 @@ def notify_groups_bot_started():
         try:
             bot.send_message(
                 group_id,
-                "✅ *¡Online!*\n\n"
-                "Verificando.\n\n"
-                "¡server listo! 💪",
+                "✅ *¡online!*\n\n"
+                "Localizando...\n\n"
+                "¡server listo! ",
                 parse_mode="Markdown",
             )
         except Exception as e:
@@ -184,7 +184,7 @@ def handle_ping(message):
         bot.reply_to(
             message,
             (
-                "*🔥 ¡INYECTADO! 🔥*\n\n"
+                "*🔥 ¡Iniciando ataques continuos....! 🔥*\n\n"
                 f"🌐 *SERVIDOR:* {ip_port}\n"
                 f"⚙️ *TIPO:* {attack_type}\n"
                 f"🧵 *Hilos:* {threads}\n"
@@ -306,7 +306,7 @@ def handle_restart_attack(call):
             markup.add(InlineKeyboardButton("🔴 PARAR ATAQUE 🔴", callback_data=f"stop_{telegram_id}"))
 
             bot.edit_message_text(
-                "*🔥 ¡INYECTADO! 🔥*\n\n"
+                "*🔥 ¡Iniciando ataques continuos....! 🔥*\n\n"
                 f"🌐 *SERVIDOR:* {ip_port}\n"
                 f"⚙️ *TIPO:* {attack_type}\n"
                 f"🧵 *HILOS:* {threads}\n"
@@ -413,8 +413,8 @@ def handle_help(message):
     bot.send_message(
         message.chat.id,
         (
-            "🔧 *¿Cómo usar?* 🤖\n\n"
-            ".\n\n"
+            "🔧 *¿Cómo usar?* \n\n"
+            "\n\n"
             "*Comandos disponibles:*\n"
             "1. `/startt`: Inicia y te da una breve introducción.\n"
             "2. `/crash <TIPO> <IP/HOST:PUERTO> <HILOS> <MS>`: Inicia.\n"
