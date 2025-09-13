@@ -118,7 +118,7 @@ def handle_start(message):
     add_user(message.chat.id)  # Asegura que el usuario quede registrado
 
     markup = InlineKeyboardMarkup()
-    button = InlineKeyboardButton("💻 *ECHO POR* 💻", url=f"tg://user?id={ADMIN_ID}")
+    button = InlineKeyboardButton("💻 SOPORTE 💻", url=f"tg://user?id={ADMIN_ID}")
     markup.add(button)
 
     bot.send_message(
